@@ -16,7 +16,7 @@ export function parseWikiLinks(text: string): React.ReactNode[] {
         <Link
           key={index}
           href={normalizedHref}
-          className="hover:text-primary-400 underline underline-offset-2"
+          className="underline underline-offset-2 hover:text-primary-400"
         >
           {label}
         </Link>
