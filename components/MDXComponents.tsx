@@ -6,6 +6,8 @@ import Image from './Image'
 import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
 import Photo from './gallery/photo'
+import { parseWikiLinks } from './WikiLink'
+import React from 'react'
 
 export const components: MDXComponents = {
   Image,
@@ -15,4 +17,14 @@ export const components: MDXComponents = {
   table: TableWrapper,
   BlogNewsletterForm,
   Photo,
+  p: ({ children }) => {
+    const parsedChildren = React.Children.map(children, (child) => {
+      if (typeof child === 'string') {
+        return parseWikiLinks(child)
+      }
+      return child
+    })
+
+    return <p>{parsedChildren}</p>
+  },
 }
