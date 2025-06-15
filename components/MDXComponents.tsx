@@ -18,6 +18,12 @@ export const components: MDXComponents = {
   BlogNewsletterForm,
   Photo,
   p: ({ children }) => {
+    // Si los children son un string, parsea directamente
+    if (typeof children === 'string') {
+      return <p>{parseWikiLinks(children)}</p>
+    }
+
+    // Si children es array o nodo, mapea recursivamente y solo parsea strings
     const parsedChildren = React.Children.map(children, (child) => {
       if (typeof child === 'string') {
         return parseWikiLinks(child)
