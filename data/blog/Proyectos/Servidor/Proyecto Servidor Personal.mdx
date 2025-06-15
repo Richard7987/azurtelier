@@ -1,0 +1,164 @@
+---
+title: Proyecto Servidor Personal
+date: '2025-04-30'
+tags: [proyecto, autoalojado, servidor, FreeBSD]
+draft: false
+summary: ## Objetivo
+---
+
+## Objetivo
+
+Este proyecto consiste en la creación de un servidor personal a partir de una computadora reutilizada, implementando el sistema operativo FreeBSD. Mediante el uso de jails (contenedores nativos de FreeBSD) y compilación por medio de binarios, se han instalado las instancias necesarias para crear un servidor completamente funcional, seguro y eficiente para uso personal.
+
+#Servidor #FreeBSD #Autoalojado #ZFS #Jails
+
+---
+
+## Sistema Base
+
+**FreeBSD** es un sistema operativo avanzado utilizado para alimentar servidores modernos, escritorios y plataformas integradas. Ha sido desarrollado continuamente por una gran comunidad durante más de treinta años. Sus características avanzadas de redes, seguridad y almacenamiento lo han convertido en la plataforma de elección para muchos de los sitios web más concurridos y los dispositivos de redes y almacenamiento integrados más generalizados.
+
+### Configuraciones Activadas
+
+- **Sistema de archivos ZFS** para:
+  - Snapshots automáticos
+  - Recuperación de datos
+  - Integridad de la información
+  - Compresión transparente
+
+- **Actualizaciones de seguridad** mediante `freebsd-update`:
+  - Parches automáticos
+  - Mitigación de vulnerabilidades
+  - Actualizaciones del kernel
+
+---
+
+## Servicios Implementados
+
+### Red y Acceso
+
+| Servicio | Descripción | Estado |
+|----------|-------------|--------|
+| **SSH** | Acceso remoto seguro con autenticación por clave | ✅ Activo |
+| **WireGuard** | VPN para acceso seguro a los servicios del servidor | ✅ Activo |
+| **CloudFlare** | Proxy inverso y protección DDoS | ✅ Configurado |
+
+### Servicios Web
+
+| Servicio | Descripción | Estado |
+|----------|-------------|--------|
+| **Nginx** | Servidor web de alto rendimiento | ✅ Activo |
+| **PostgreSQL** | Sistema de gestión de bases de datos | ✅ Activo |
+| **Nextcloud** | Almacenamiento en la nube personal | ✅ Activo |
+| **Let's Encrypt** | Certificados HTTPS gratuitos | ✅ Configurado |
+| **Bitwarden** | Gestor de contraseñas | ✅ Activo |
+| **Synapse** | Servidor de mensajería Matrix | ✅ Activo |
+| **PHP** | Procesamiento dinámico para aplicaciones web | ✅ Activo |
+
+### Seguridad
+
+| Servicio | Descripción | Estado |
+|----------|-------------|--------|
+| **pf** | Firewall avanzado | ✅ Configurado |
+| **fail2ban** | Protección contra ataques de fuerza bruta | ✅ Activo |
+| **ClamAV** | Antivirus ligero | ✅ Activo |
+
+### Herramientas de Administración
+
+| Herramienta | Descripción | Estado |
+|-------------|-------------|--------|
+| **ports** | Sistema de compilación de binarios | ✅ Configurado |
+| **htop** | Monitor de procesos interactivo | ✅ Instalado |
+| **tmux** | Gestor de sesiones de terminal | ✅ Configurado |
+| **ZFS snapshots** | Sistema de respaldos incrementales | ✅ Automatizado |
+
+### Backup y Monitoreo
+
+| Servicio | Descripción | Estado |
+|----------|-------------|--------|
+| **Restic** | Sistema de backups cifrados | ✅ Configurado |
+| **Netdata** | Monitoreo en tiempo real | ✅ Activo |
+
+### Contenedores y Virtualización
+
+| Tecnología | Descripción | Estado |
+|------------|-------------|--------|
+| **bastilleBSD** | Gestor de jails (contenedores FreeBSD) | ✅ Configurado |
+| **bhyve** | Hipervisor nativo de FreeBSD | ✅ Instalado |
+
+---
+
+## Notas Importantes
+
+> [!NOTE]
+> - En FreeBSD, muchas veces es mejor compilar software desde ports si se busca la máxima personalización.
+> - Los paquetes (pkg) son muy rápidos y eficientes para instalaciones estándar.
+> - La documentación de FreeBSD es considerada una de las mejores del mundo: [Documentación Oficial](https://docs.freebsd.org/)
+
+---
+
+## Arquitectura del Sistema
+
+```
+                    +------------------+
+                    |   Proxy Inverso  |
+                    |     (Nginx)      |
+                    +--------+---------+
+                             |
+           +----------------++-----------------+
+           |                |                  |
++----------v------+ +-------v--------+ +-------v--------+
+|   Nextcloud     | |    Synapse     | |   Bitwarden    |
+| (Almacenamiento)| | (Mensajería)   | | (Contraseñas)  |
++----------+------+ +-------+--------+ +-------+--------+
+           |                |                  |
+           +----------------v------------------+
+                            |
+                    +-------v--------+
+                    |   PostgreSQL   |
+                    | (Base de datos)|
+                    +----------------+
+```
+
+---
+
+## Checklist de Implementación
+
+- [x] Instalar el sistema operativo 
+- [x] Primer arranque y actualizaciones 
+- [x] Seguridad básica 
+- [x] Servidor Web
+- [x] Instalar PostgreSQL (Nextcloud + Synapse)
+- [x] Instalar Nextcloud 
+- [x] Instalar Synapse 
+- [x] Instalar Element 
+- [x] Instalar Bridges de Matrix 
+- [x] Aislamiento con Jails 
+
+---
+
+## Próximos Pasos
+
+1. **Optimización de rendimiento**
+   - Ajuste fino de parámetros del kernel
+   - Optimización de ZFS para el caso de uso específico
+   - Análisis de rendimiento con herramientas especializadas
+
+2. **Ampliación de servicios**
+   - Implementación de sistema de monitoreo más completo
+   - Configuración de alertas automáticas
+   - Integración con servicios externos
+
+3. **Documentación**
+   - Creación de manual de recuperación ante desastres
+   - Documentación de procedimientos de mantenimiento
+   - Registro de configuraciones específicas
+
+---
+
+## Referencias y Recursos
+
+- [Manual de FreeBSD](https://docs.freebsd.org/en/books/handbook/)
+- [Guía de bastilleBSD](https://bastillebsd.org/getting-started/)
+- [Documentación de ZFS](https://docs.freebsd.org/en/books/handbook/zfs/)
+- [Configuración de Nginx](https://docs.nginx.com/nginx/admin-guide/)

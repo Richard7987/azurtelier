@@ -1,0 +1,71 @@
+---
+title: Diseño
+date: '2025-06-14'
+tags: ['general']
+draft: false
+summary: #Hongos #Diseño #Cubos
+---
+
+#Hongos #Diseño #Cubos
+
+Este sistema está compuesto por **cubos modulares autónomos**, un **estante inteligente centralizado** y una **interfaz de control mediante app** que permite escalar fácilmente el laboratorio de cultivo.
+
+
+## 1. 📦 [Diseño de los Cubos](Hardware.md)  
+
+Cada cubo será un "[paquete modular](Cubos.md)" totalmente autónomo, que integra sensores, actuadores y conectividad.  
+
+### 🧊 Estructura física:  
+- **Caja de contención:**  
+  - Material: Plástico o acrílico con aislamiento térmico.  
+  - Diseño modular y ventilado.  
+
+### 📡 Componentes internos:  
+- **🌫 Sensor de humedad:** Para controlar automáticamente el humidificador.  
+- **🧪 Sensor de CO₂:** Asegura un entorno gaseoso óptimo.  
+- **🔥 Sistema de calefacción:** Controlado por sensor de temperatura.  
+- **💨 Ventiladores:** Facilitan circulación de aire y control de gases.  
+- **📷 Cámara integrada:** Para monitoreo visual con análisis por IA.  
+- **🔌 Conexión de energía:** Cada cubo cuenta con su propia fuente o adaptador.  
+- **📶 Puerto de comunicación:** Transmisión de datos vía Wi-Fi, MQTT u otro protocolo.
+
+
+## 2. 🗄️ [Estante Vertical Inteligente](Estante.md)  
+
+### 🧩 Soporte físico:  
+- **Rieles de montaje:** Permiten insertar/sacar cubos de forma sencilla.  
+- **Plataforma de gestión central:**  
+  - Procesamiento, automatización y distribución de energía.  
+  - Posible uso de una Raspberry Pi u otro microcontrolador como cerebro del sistema.  
+
+### ⚡ Energía de respaldo:  
+- **Sistema UPS (baterías):** Mantiene operatividad durante cortes de energía.
+
+
+## 3. 📱 Interfaz y Automatización  
+
+Una aplicación móvil/web será la interfaz principal para controlar el ecosistema:
+
+- **👤 Configuración por especie:**  
+  - Al agregar un cubo, el usuario selecciona el hongo (p. ej., *Sinocubila*, *Cordyceps*, *Melena de León*).  
+  - La IA ajusta automáticamente los parámetros óptimos para su crecimiento.
+
+- **📈 Visualización en tiempo real:**  
+  - Gráficas de temperatura, humedad y CO₂.  
+  - Notificaciones automáticas sobre cosecha, estado anormal, etc.
+
+- **🌱 Detección de cosecha lista:**  
+  - Visión artificial y machine learning detectan el estado de crecimiento y madurez del cultivo.
+
+
+## 4. 🧩 Modularidad y Escalabilidad  
+
+- **🚀 Inicio básico:**  
+  - El sistema se iniciará con **5 cubos modulares**.  
+
+- **🔄 Expansión sin fricción:**  
+  - Solo se requiere añadir cubos adicionales y configurarlos en la app para escalar el sistema.  
+  - Todo el control se mantiene centralizado y automatizado.
+
+
+> 🔧 El diseño está pensado para combinar tecnología, eficiencia y facilidad de uso, permitiendo un cultivo casero altamente profesional y automatizado.

@@ -1,0 +1,157 @@
+---
+title: TARS - Asistente Robótico Inteligente
+date: '2024-05-23'
+tags: [proyecto, IA, robótica, interstellar]
+draft: false
+summary: ## Resumen del Proyecto
+---
+
+## Resumen del Proyecto
+
+Este proyecto tiene como objetivo crear una réplica funcional de TARS, el robot asistente que aparece en la película Interstellar. El sistema está impulsado por inteligencia artificial, permitiéndole entablar conversaciones naturales y emular respuestas emocionales. El diseño se basa en el proyecto de [Hackster.io](https://www.hackster.io/charlesdiaz/how-to-build-your-own-replica-of-tars-from-interstellar-224833#cad), con mejoras significativas en movilidad, interacción y capacidades de IA.
+
+#Robótica #IA #TARS #Interstellar #RaspberryPi
+
+---
+
+## Versiones del Proyecto
+
+### TARS V1
+
+La versión inicial fue mi primer intento de réplica autopropulsada en miniatura. Aunque muchas ideas implementadas no se probaron previamente, sirvió como base fundamental para el desarrollo.
+
+#### Componentes Principales
+- **Computadora**: Raspberry Pi 3B+ con Raspbian
+- **Servomotores**: Cuatro servos de engranajes metálicos de alto par
+- **Controlador**: Adafruit PCA-9685 para manejo de servos
+- **Alimentación**: Dos paquetes de baterías NiMH de 8 celdas (7,2 V) en paralelo
+- **Pantalla**: Monitor HDMI de 5"
+- **Control**: Controlador bluetooth 8BitDo Zero 2
+
+#### Estructura
+El chasis V1 se construyó con un enfoque vertebrado, utilizando "espinas" de extrusión de aluminio como base estructural. Sobre esta base se fijaron piezas de policarbonato impresas en 3D que definieron la forma general y el tren motriz del robot.
+
+#### Limitaciones Identificadas
+- Pasos pesados y violentos debido al exceso de peso de las baterías NiMH
+- Mala distribución del peso (componentes pesados concentrados en el torso)
+- Programa de marcha subdesarrollado
+- Componentes impresos en 3D propensos a romperse por impacto
+
+---
+
+## Sistema de Control
+
+### Arquitectura de Software
+
+El sistema de control está organizado en tres capas principales:
+
+1. **Servo Controller**: Maneja los movimientos básicos de los servos
+2. **Servo Abstractor**: Combina movimientos básicos para crear funciones complejas
+3. **TARS Runner**: Gestiona la comunicación con el control remoto y la ejecución de comandos
+
+#### Servo Abstractor
+Este programa toma los movimientos básicos del controlador de servos y los combina para automatizar funciones de movimiento complejas:
+
+```python
+import time 
+import TARS_Servo_Controller3
+    
+def stepForward():
+    TARS_Servo_Controller3.height_neutral_to_up()
+    TARS_Servo_Controller3.torso_neutral_to_forwards()
+    TARS_Servo_Controller3.torso_bump()
+    TARS_Servo_Controller3.torso_return()
+    
+def turnRight():
+    TARS_Servo_Controller3.neutral_to_down()
+    TARS_Servo_Controller3.turn_right()
+    TARS_Servo_Controller3.down_to_neutral()
+    TARS_Servo_Controller3.neutral_from_right()
+    
+def turnLeft(): 
+    TARS_Servo_Controller3.neutral_to_down()
+    TARS_Servo_Controller3.turn_left()
+    TARS_Servo_Controller3.down_to_neutral()
+    TARS_Servo_Controller3.neutral_from_left()
+    
+def pose():
+    TARS_Servo_Controller3.neutral_to_down()
+    TARS_Servo_Controller3.torso_neutral_to_backwards()
+    TARS_Servo_Controller3.down_to_up()
+
+def unpose():
+    TARS_Servo_Controller3.torso_return2()
+```
+
+---
+
+## Mejoras Planificadas para TARS V2
+
+### Hardware
+- Sustitución de baterías NiMH por paquetes LiPo más ligeros
+- Mejora del diseño estructural para mejor distribución del peso
+- Servomotores de mayor precisión y menor consumo
+- Pantalla OLED con mayor resolución y menor consumo energético
+
+### Software
+- Integración de un modelo de IA conversacional basado en transformers
+- Sistema de reconocimiento de voz para comandos hablados
+- Expresiones faciales en pantalla para comunicación emocional
+- Algoritmos de marcha mejorados para movimiento más fluido
+
+### Interacción
+- Capacidad para responder a preguntas complejas
+- Ajuste de parámetros de personalidad (humor, sarcasmo, etc.)
+- Reconocimiento facial para identificar usuarios
+- Integración con sistemas domóticos
+
+---
+
+## Desafíos Técnicos
+
+### Movilidad
+El principal desafío ha sido el mecanismo de elevación. En la versión inicial, las piernas contactaban con el suelo y se atascaban, impidiendo el movimiento de caminar. La solución implementada fue crear canales rectangulares más grandes en los agujeros cuadrados dentro de los que gira el eje principal, permitiendo que tanto el eje como ambas patas se desplacen verticalmente en relación con el módulo central del torso.
+
+### Equilibrio y Estabilidad
+La distribución del peso y el centro de gravedad son críticos para el funcionamiento correcto. Se requiere un cuidadoso equilibrio entre los componentes para evitar caídas durante el movimiento.
+
+### Consumo Energético
+La autonomía es limitada debido al alto consumo de los servomotores. La optimización del consumo energético es una prioridad para futuras versiones.
+
+---
+
+## Próximos Pasos
+
+1. **Rediseño Estructural**
+   - Optimizar la distribución de peso
+   - Reducir el peso total del sistema
+   - Mejorar la resistencia de componentes críticos
+
+2. **Mejoras en Movilidad**
+   - Desarrollar algoritmos de marcha más eficientes
+   - Implementar detección de obstáculos
+   - Añadir capacidad para navegar en diferentes terrenos
+
+3. **Integración de IA Avanzada**
+   - Implementar modelo conversacional basado en LLM
+   - Desarrollar sistema de reconocimiento de voz
+   - Crear interfaz visual para expresiones faciales
+
+4. **Optimización Energética**
+   - Transición a baterías LiPo
+   - Implementar modos de ahorro de energía
+   - Optimizar consumo de componentes electrónicos
+
+---
+
+> [!TIP] Inspiración del proyecto
+> "No necesito que un robot me diga lo importante que son los humanos." - Cooper, Interstellar
+
+---
+
+## Referencias y Recursos
+
+- [Proyecto original en Hackster.io](https://www.hackster.io/charlesdiaz/how-to-build-your-own-replica-of-tars-from-interstellar-224833#cad)
+- [Implementación de referencia](https://www.instagram.com/reel/DCfSbF2umpf/?igsh=NmtzbThobWt4dDBj)
+- [Documentación de Raspberry Pi](https://www.raspberrypi.org/documentation/)
+- [Guía de servomotores para robótica](https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi)
