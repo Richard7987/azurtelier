@@ -1,3 +1,4 @@
+import React from 'react'
 import TOCInline from 'pliny/ui/TOCInline'
 import Pre from 'pliny/ui/Pre'
 import BlogNewsletterForm from 'pliny/ui/BlogNewsletterForm'
@@ -7,7 +8,7 @@ import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
 import Photo from './gallery/photo'
 import { parseWikiLinks } from './WikiLink'
-import React from 'react'
+import ParsedHeading from './ParsedHeading'
 
 export const components: MDXComponents = {
   Image,
@@ -18,12 +19,10 @@ export const components: MDXComponents = {
   BlogNewsletterForm,
   Photo,
   p: ({ children }) => {
-    // Si los children son un string, parsea directamente
     if (typeof children === 'string') {
       return <p>{parseWikiLinks(children)}</p>
     }
 
-    // Si children es array o nodo, mapea recursivamente y solo parsea strings
     const parsedChildren = React.Children.map(children, (child) => {
       if (typeof child === 'string') {
         return parseWikiLinks(child)
@@ -33,4 +32,34 @@ export const components: MDXComponents = {
 
     return <p>{parsedChildren}</p>
   },
+  h1: ({ children, ...props }) => (
+    <ParsedHeading as="h1" {...props}>
+      {children}
+    </ParsedHeading>
+  ),
+  h2: ({ children, ...props }) => (
+    <ParsedHeading as="h2" {...props}>
+      {children}
+    </ParsedHeading>
+  ),
+  h3: ({ children, ...props }) => (
+    <ParsedHeading as="h3" {...props}>
+      {children}
+    </ParsedHeading>
+  ),
+  h4: ({ children, ...props }) => (
+    <ParsedHeading as="h4" {...props}>
+      {children}
+    </ParsedHeading>
+  ),
+  h5: ({ children, ...props }) => (
+    <ParsedHeading as="h5" {...props}>
+      {children}
+    </ParsedHeading>
+  ),
+  h6: ({ children, ...props }) => (
+    <ParsedHeading as="h6" {...props}>
+      {children}
+    </ParsedHeading>
+  ),
 }
