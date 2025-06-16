@@ -28,7 +28,7 @@ export function LanguageProvider({ children }) {
       router.push(newPath)
     }
     setCurrentLang(currentLang)
-  }, [currentLang])
+  }, [currentLang, router])
 
   return (
     <LanguageContext.Provider value={{ currentLang, setCurrentLang }}>
