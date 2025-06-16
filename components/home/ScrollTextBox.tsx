@@ -10,10 +10,23 @@ export default function ScrollTextBox() {
 
   return (
     <div
-      className={`card bg-pink-blue-animated animation-delay-2 flex-center flex-grow flex-col space-y-5 overflow-hidden p-2`}
+      className={`card bg-pink-blue-animated animation-delay-2 flex-center flex-grow flex-col space-y-5 overflow-hidden p-6`}
     >
-      <h1 className="font-zzz2 text-white">Coming Soon</h1>
-      <motion.div className="bg-gray-purple h-8 w-8" style={{ scale, rotate, borderRadius }} />
+      <h1 className="font-zzz2 text-3xl text-white">Nezzontli</h1>
+      <p className="max-w-xs text-center text-gray-300">
+        Un espacio donde el código, la ciencia y la creatividad convergen.
+      </p>
+      <motion.div
+        className="bg-gray-purple flex h-12 w-12 items-center justify-center"
+        style={{ scale, rotate, borderRadius }}
+      >
+        <motion.span
+          style={{ scale: useTransform(scrollY, viewPoints, [1, 1.2, 1.2, 1, 1]) }}
+          className="text-xs font-bold text-white"
+        >
+          scroll
+        </motion.span>
+      </motion.div>
     </div>
   )
 }
