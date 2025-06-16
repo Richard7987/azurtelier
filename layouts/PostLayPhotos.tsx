@@ -24,7 +24,7 @@ export default function PostPhotos({ content, authorDetails, next, prev, childre
           images.map((image: string, i: number) => (
             <Photo
               key={i}
-              src=""
+              src={images}
               imagelist={images}
               index={i}
               alt={image}
