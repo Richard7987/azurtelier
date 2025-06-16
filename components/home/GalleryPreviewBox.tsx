@@ -9,7 +9,7 @@ export default function GalleryPreviewBox() {
       <Photo
         id={uuidv4()}
         imagelist={imgSrc}
-        alt="azuki"
+        alt="Ale"
         className="h-full w-full object-cover"
         width={832}
         height={1216}
