@@ -7,7 +7,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/Richard7987/azurtelier.github.io',
+  siteRepo: 'https://github.com/Richard7987/azurtelier',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/avatar.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
@@ -15,11 +15,10 @@ const siteMetadata = {
   github: 'https://github.com/Richard7987',
   linkedin: 'https://www.linkedin.com/in/alejandro-bernal-50233a350/',
   // mastodon: 'https://mastodon.social/@mastodonuser',
-  twitter: 'https://twitter.com/Azurtelier',
   // facebook: 'https://facebook.com',
   // youtube: 'https://youtube.com',
   // threads: 'https://www.threads.net',
-  // instagram: 'https://www.instagram.com',
+  instagram: 'https://www.instagram.com/rmdir_berni',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
