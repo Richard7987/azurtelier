@@ -1,81 +1,89 @@
 'use client'
+
 import { useEffect, useRef } from 'react'
-import { useScroll, useTransform } from 'framer-motion'
 
 export default function ScrollTextBox() {
-  const { scrollY } = useScroll()
-  const viewPoints = [0, 150, 300, 450, 600]
-  const scale = useTransform(scrollY, viewPoints, [1, 1.5, 1.5, 1, 1])
-  const borderRadius = useTransform(scrollY, viewPoints, ['0%', '0%', '50%', '50%', '0%'])
-
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    const canvas = canvasRef.current!
-    const ctx = canvas.getContext('2d')!
-    let A = 1,
-      B = 1
-    const R1 = 1,
-      R2 = 2,
-      K1 = 150,
-      K2 = 5
-    const width = canvas.width,
-      height = canvas.height
+    const canvas = canvasRef.current
+    if (!canvas) return
 
-    ctx.font = '12px monospace'
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
 
-    function frame() {
-      ctx.fillStyle = '#000'
-      ctx.fillRect(0, 0, width, height)
+    const width = canvas.width
+    const height = canvas.height
 
-      A += 0.07
-      B += 0.03
+    // ASCII characters por "brillo"
+    const chars = '.,-~:;=!*#$@'
 
-      const cA = Math.cos(A),
-        sA = Math.sin(A)
-      const cB = Math.cos(B),
-        sB = Math.sin(B)
+    // Donut params
+    let A = 0,
+      B = 0
+
+    const renderFrame = () => {
+      const b = new Array(width * height).fill(' ')
+      const z = new Array(width * height).fill(0)
 
       for (let j = 0; j < 6.28; j += 0.07) {
-        const ct = Math.cos(j),
-          st = Math.sin(j)
         for (let i = 0; i < 6.28; i += 0.02) {
-          const sp = Math.sin(i),
-            cp = Math.cos(i)
-          const ox = R2 + R1 * ct,
-            oy = R1 * st
-          const x = ox * (cB * cp + sA * sB * sp) - oy * cA * sB
-          const y = ox * (sB * cp - sA * cB * sp) + oy * cA * cB
-          const ooz = 1 / (K2 + cA * ox * sp + sA * oy)
-          const xp = width / 2 + K1 * ooz * x
-          const yp = height / 2 - K1 * ooz * y
-          const L = cp * ct * sB - cA * ct * sp - sA * st + cB * (cA * st - ct * sA * sp)
-          if (L > 0) {
-            ctx.fillStyle = `rgba(255,255,255,${L})`
-            ctx.fillText('.', xp, yp)
+          const c = Math.sin(i)
+          const d = Math.cos(j)
+          const e = Math.sin(A)
+          const f = Math.sin(j)
+          const g = Math.cos(A)
+          const h = d + 2
+          const D = 1 / (c * h * e + f * g + 5)
+          const l = Math.cos(i)
+          const m = Math.cos(B)
+          const n = Math.sin(B)
+          const t = c * h * g - f * e
+          const x = Math.floor(width / 2 + (width / 4) * D * (l * h * m - t * n))
+          const y = Math.floor(height / 2 + (height / 2) * D * (l * h * n + t * m))
+          const o = x + width * y
+          const N = Math.floor(8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n))
+          if (height > y && y > 0 && x > 0 && width > x && D > z[o]) {
+            z[o] = D
+            b[o] = chars[Math.max(0, N)]
           }
         }
       }
 
-      requestAnimationFrame(frame)
+      ctx.fillStyle = 'black'
+      ctx.fillRect(0, 0, width, height)
+
+      ctx.fillStyle = 'white'
+      ctx.font = '10px monospace'
+      const text = b.join('')
+      const lines = text.match(new RegExp(`.{1,${width}}`, 'g')) || []
+      lines.forEach((line, i) => {
+        ctx.fillText(line, 2, 10 + i * 10)
+      })
+
+      A += 0.04
+      B += 0.02
+
+      requestAnimationFrame(renderFrame)
     }
 
-    frame()
+    renderFrame()
   }, [])
 
   return (
     <div className="card bg-pink-blue-animated animation-delay-2 flex-center flex-grow flex-col space-y-5 overflow-hidden p-2">
       <h1 className="font-zzz2 text-white">Coming Soon</h1>
 
-      <div
-        className="rounded-md bg-black shadow-md"
+      <canvas
+        ref={canvasRef}
+        width={80}
+        height={50}
         style={{
-          transform: `scale(${scale.get()})`,
-          borderRadius: borderRadius.get(),
+          background: 'black',
+          width: '320px',
+          height: '200px',
         }}
-      >
-        <canvas ref={canvasRef} width={240} height={160} className="bg-black" />
-      </div>
+      />
     </div>
   )
 }
