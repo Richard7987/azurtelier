@@ -1,38 +1,17 @@
 'use client'
-import { useMediaQuery } from 'react-responsive'
-import SpotifyPlayerBox from './SpotifyPlayerBox'
-import GithubActivityBox from './GithubActivityBox'
-import ScrollTextBox from './ScrollTextBox'
-import GalleryPreviewBox from './GalleryPreviewBox'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
-export default function ResponsiveBox() {
-  const isXs = useMediaQuery({ query: '(max-width: 480px)' })
-  const isMd = useMediaQuery({ query: '(min-width: 768px)' })
-
-  const flex_row = 'flex-row space-x-3'
-  const flex_col = 'flex-col space-y-3'
-
-  function getLayout(xs: string, sm: string, md: string) {
-    if (isXs) {
-      return xs
-    } else if (isMd) {
-      return md
-    }
-    return sm
-  }
+export default function ScrollTextBox() {
+  const { scrollY } = useScroll()
+  const viewPoints = [0, 150, 300, 450, 600]
+  const scale = useTransform(scrollY, viewPoints, [1, 1.5, 1.5, 1, 1])
+  const rotate = useTransform(scrollY, viewPoints, [0, 0, 180, 180, 0])
+  const borderRadius = useTransform(scrollY, viewPoints, ['0%', '0%', '50%', '50%', '0%'])
 
   return (
-    <section className={`mt-3 flex justify-between ${getLayout(flex_col, flex_row, flex_row)}`}>
-      <div
-        className={`flex flex-grow justify-between ${getLayout(flex_col, flex_col, flex_row)} min-w-[75%]`}
-      >
-        <div className={`flex ${getLayout(flex_row, flex_row, flex_col)} min-w-[45%]`}>
-          <SpotifyPlayerBox />
-          <ScrollTextBox />
-        </div>
-        <GithubActivityBox />
-      </div>
-      <GalleryPreviewBox />
-    </section>
+    <div className="bg-pink-blue-animated animation-delay-2 flex-center flex-grow flex-col space-y-5 overflow-hidden p-2">
+      <h1 className="font-arial text-white">Un lugar donde comparto mis ideas</h1>
+      <motion.div className="bg-gray-purple h-8 w-8" style={{ scale, rotate, borderRadius }} />
+    </div>
   )
 }
