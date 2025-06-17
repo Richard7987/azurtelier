@@ -1,7 +1,13 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { useScroll, useTransform } from 'framer-motion'
 
-export default function ScrollAsciiDonut() {
+export default function ScrollTextBox() {
+  const { scrollY } = useScroll()
+  const viewPoints = [0, 150, 300, 450, 600]
+  const scale = useTransform(scrollY, viewPoints, [1, 1.5, 1.5, 1, 1])
+  const borderRadius = useTransform(scrollY, viewPoints, ['0%', '0%', '50%', '50%', '0%'])
+
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -58,8 +64,18 @@ export default function ScrollAsciiDonut() {
   }, [])
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black">
-      <canvas ref={canvasRef} width={320} height={240} className="bg-black" />
+    <div className="card bg-pink-blue-animated animation-delay-2 flex-center flex-grow flex-col space-y-5 overflow-hidden p-2">
+      <h1 className="font-zzz2 text-white">Coming Soon</h1>
+
+      <div
+        className="rounded-md bg-black shadow-md"
+        style={{
+          transform: `scale(${scale.get()})`,
+          borderRadius: borderRadius.get(),
+        }}
+      >
+        <canvas ref={canvasRef} width={240} height={160} className="bg-black" />
+      </div>
     </div>
   )
 }
