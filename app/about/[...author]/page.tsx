@@ -3,6 +3,7 @@ import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import AuthorLayout from '@/layouts/AuthorLayout'
 import { coreContent } from 'pliny/utils/contentlayer'
+import Info from "@/components/Info"
 
 export const generateStaticParams = async () => {
   const paths = allAuthors.map((p) => ({ author: p.slug.split('/') }))
