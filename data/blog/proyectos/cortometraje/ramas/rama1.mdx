@@ -80,14 +80,16 @@ summary: En esta rama narrativa, el protagonista crea un bucle meta-referencial 
 
 ---
 import React from 'react';
+
 export function Info({ title, children }) {
   return (
-    <div style={{ borderLeft: '4px solid #3B82F6', background: '#EFF6FF', padding: '1em', borderRadius: '0.5em' }}>
-      <strong style={{ color: '#1D4ED8' }}>{title}</strong><br/>
+    <div className="border-l-4 border-blue-500 bg-blue-100 dark:bg-blue-900/30 dark:border-blue-400 p-4 rounded-lg">
+      <strong className="text-blue-700 dark:text-blue-300">{title}</strong><br />
       {children}
     </div>
   );
 }
+
 
 <Info title="💡 Punto de desarrollo">
   Esta rama narrativa termina en un punto abierto que permite múltiples interpretaciones y posibilidades para continuar la historia.
