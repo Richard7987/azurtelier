@@ -1,189 +1,178 @@
 ---
 title: Construcción de mi propia laptop
-date: '2024-05-20'
-tags: ['proyecto', 'hardware', 'DIY']
+date: '2024-06-12'
+tags: ['proyecto', 'laptop']
 draft: false
 summary: Este proyecto tiene como objetivo replicar la laptop **anyon_e**
 ---
 
-## Resumen del Proyecto
+## 🛠️ Resumen del Proyecto
 
-Este proyecto tiene como objetivo replicar la laptop **anyon_e**, un diseño open source creado por [Byran Huang](https://www.byran.ee/posts/creation). Se trata de una computadora portátil modular, altamente integrada y totalmente personalizable, con un enfoque en la reparabilidad, el control del hardware y el aprendizaje desde cero de los componentes que conforman un sistema informático moderno.
+Este proyecto tiene como objetivo replicar la laptop **anyon_e**, un diseño open source creado por [Byran Huang](https://www.byran.ee/posts/creation).
 
-El proyecto combina conocimientos de electrónica, diseño 3D, programación y fabricación digital para crear una laptop única, adaptada a necesidades específicas y con total control sobre el hardware y software.
-
-
----
-
-## Documentación y Recursos
-
-Toda la documentación y archivos necesarios están disponibles públicamente:
-
-- **Repositorio GitHub**: [github.com/Hello9999901/laptop](https://github.com/Hello9999901/laptop)
-- **Sitio web del creador**: [byran.ee/posts/creation](https://www.byran.ee/posts/creation)
-- **Video explicativo**: [How I Made A Laptop From Scratch](https://www.youtube.com/watch?v=fks3PBodyiE)
+Se trata de una computadora portátil modular, altamente integrada y totalmente personalizable, con un enfoque en la **reparabilidad**, el **control del hardware** y el **aprendizaje autodidacta** sobre los componentes modernos.
 
 ---
 
-## Componentes Necesarios
+## 📚 Documentación y Recursos
+
+- 🔗 **Repositorio GitHub**: [github.com/Hello9999901/laptop](https://github.com/Hello9999901/laptop)
+- 🧠 **Sitio del creador**: [byran.ee/posts/creation](https://www.byran.ee/posts/creation)
+- ▶️ **Video explicativo**: [YouTube - How I Made A Laptop From Scratch](https://www.youtube.com/watch?v=fks3PBodyiE)
+
+---
+
+## 🧩 Componentes Necesarios
 
 ### 1. Módulo SoC (RK3588)
 
-| Especificación | Detalles |
-|----------------|----------|
-| **Modelo** | CM3588 |
-| **Descripción** | Cerebro de la laptop, ejecuta el sistema operativo completo |
-| **Proveedores** | [FriendlyElec](https://www.friendlyelec.com/index.php?route=product/product&product_id=312), [eBay](https://www.ebay.com/itm/356336193089) |
-| **Precio estimado** | $300 USD |
+| Especificación   | Detalles |
+|------------------|----------|
+| **Modelo**       | CM3588 |
+| **Descripción**  | Cerebro de la laptop, ejecuta el sistema operativo completo |
+| **Proveedores**  | [FriendlyElec](https://www.friendlyelec.com/index.php?route=product/product&product_id=312), [eBay](https://www.ebay.com/itm/356336193089) |
+| **Precio**       | $300 USD |
 
 ### 2. Pantalla AMOLED 13.3"
 
-| Especificación | Detalles |
-|----------------|----------|
 | **Modelo sugerido** | Wisecoco 2880x1920 AMOLED |
-| **Proveedor** | [Amazon](https://www.amazon.com/-/es/dp/B0CN4B659V) |
-| **Precio estimado** | $120–150 USD |
+|---------------------|---------------------------|
+| **Proveedor**       | [Amazon](https://www.amazon.com/-/es/dp/B0CN4B659V) |
+| **Precio**          | $120–150 USD |
 
 ### 3. Microcontrolador auxiliar (ESP32-S3)
 
-| Especificación | Detalles |
-|----------------|----------|
-| **Función** | Control de periféricos, ventiladores, sensores y encendido |
+| **Función** | Control de periféricos, ventiladores y sensores |
+|-------------|--------------------------------------------------|
 | **Proveedor** | [Amazon México](https://www.amazon.com.mx/dp/B0C28FFBRP) |
-| **Precio estimado** | $10–20 USD |
+| **Precio** | $10–20 USD |
 
 ### 4. Teclado mecánico
 
-| Especificación | Detalles |
-|----------------|----------|
-| **Tipo** | Hot-swappable, diseño personalizado o kit comercial |
+| **Tipo** | Hot-swappable, diseño personalizado |
+|----------|-------------------------------------|
 | **Proveedores** | [Keychron](https://www.keychron.com), Amazon, AliExpress |
-| **Precio estimado** | $80-150 USD |
+| **Precio** | $80–150 USD |
 
 ### 5. Trackpad
 
-| Especificación | Detalles |
-|----------------|----------|
 | **Recomendado** | Apple Magic Trackpad 2 (Bluetooth) |
-| **Proveedores** | [Apple México](https://www.apple.com/mx/shop/product/MXKA3BE/A), eBay (usado) |
-| **Precio estimado** | $90–130 USD |
+|-----------------|-------------------------------------|
+| **Proveedores** | [Apple México](https://www.apple.com/mx/shop/product/MXKA3BE/A), eBay |
+| **Precio** | $90–130 USD |
 
 ### 6. Batería
 
-| Especificación | Detalles |
-|----------------|----------|
-| **Modelo sugerido** | Dell F3YGT (60Wh Li-Po) |
+| **Modelo** | Dell F3YGT (60Wh Li-Po) |
+|------------|--------------------------|
 | **Proveedor** | [MercadoLibre](https://articulo.mercadolibre.com.mx/MLM-2083043737-bateria-de-laptop-swealeer-76v-60wh-f3ygt-para-dell-_JM) |
-| **Nota** | Requiere módulo BMS (gestión de batería) |
-| **Precio estimado** | $50-80 USD |
+| **Nota** | Requiere módulo BMS |
+| **Precio** | $50–80 USD |
 
 ### 7. Placa base personalizada
 
-| Especificación | Detalles |
-|----------------|----------|
-| **Archivos** | Disponibles en el repositorio GitHub del proyecto |
+| **Archivos** | En GitHub |
+|--------------|-----------|
 | **Fabricación** | [PCBWay](https://www.pcbway.com), [JLCPCB](https://jlcpcb.com) |
-| **Software de diseño** | KiCad |
-| **Precio estimado** | $50-100 USD (dependiendo de complejidad y cantidad) |
+| **Diseño** | KiCad |
+| **Precio** | $50–100 USD |
 
 ### 8. Sistema de refrigeración
 
-| Especificación | Detalles |
-|----------------|----------|
-| **Componentes** | Disipador + heatpipes + ventilador pequeño |
+| **Componentes** | Disipador, heatpipes, ventilador |
+|-----------------|-------------------------------|
 | **Proveedores** | Amazon, AliExpress |
-| **Precio estimado** | $20-40 USD |
+| **Precio** | $20–40 USD |
 
-### 9. Chasis (carcasa)
+### 9. Chasis
 
-| Especificación | Detalles |
-|----------------|----------|
-| **Material recomendado** | Aluminio anodizado |
-| **Método** | CNC profesional ([PCBWay CNC Service](https://www.pcbway.com/rapid-prototyping/cnc-machining/)) |
-| **Alternativa temporal** | Impresión 3D (para prototipos) |
-| **Precio estimado** | $150-300 USD (CNC), $20-50 USD (impresión 3D) |
+| **Material** | Aluminio anodizado (ideal), impresión 3D (prototipo) |
+|--------------|--------------------------------------------------------|
+| **Fabricación CNC** | [PCBWay CNC](https://www.pcbway.com/rapid-prototyping/cnc-machining/) |
+| **Precio** | $150–300 USD (CNC), $20–50 USD (3D) |
 
 ---
 
-## Accesorios y Piezas Adicionales
+## 🔩 Accesorios y Piezas Adicionales
 
-| Componente | Proveedor | Precio estimado |
-|------------|-----------|-----------------|
-| Tornillos M2/M3 | Amazon / ferreterías | $5-10 USD |
-| Cables flex (eDP, USB, GPIO) | AliExpress | $15-30 USD |
-| Módulo BMS para batería | Amazon / AliExpress | $10-20 USD |
-| Conectores USB, HDMI | Amazon / electrónica local | $10-15 USD |
-| Pines GPIO / cables dupont | SparkFun / AliExpress | $5-10 USD |
+| Componente | Proveedor | Precio |
+|------------|-----------|--------|
+| Tornillos M2/M3 | Amazon, ferreterías | $5–10 USD |
+| Cables flex eDP/USB | AliExpress | $15–30 USD |
+| Módulo BMS | Amazon, AliExpress | $10–20 USD |
+| Conectores USB/HDMI | Amazon, tiendas locales | $10–15 USD |
+| Pines GPIO, cables dupont | SparkFun, AliExpress | $5–10 USD |
 
 ---
 
-## Herramientas Necesarias
+## 🧰 Herramientas Necesarias
 
-- **Soldador de precisión** con temperatura regulable
-- **Multímetro** digital
-- **Juego de destornilladores** de precisión
-- **Impresora 3D** (opcional, para prototipos)
-- **Acceso a CNC** (recomendado para chasis final)
-- **Conocimientos técnicos**:
+- 🔧 Soldador de precisión
+- 🔍 Multímetro digital
+- 🪛 Juego de destornilladores
+- 🖨️ Impresora 3D (opcional)
+- 🛠️ Acceso a CNC (recomendado)
+- 🧠 Conocimientos:
   - Electrónica básica
   - Diseño CAD
-  - Soldadura de componentes
-  - Configuración de sistemas Linux
+  - Soldadura
+  - Linux
 
 ---
 
-## Plan de Implementación
+## 📅 Plan de Implementación
 
-### Fase 1: Diseño y Planificación
-- [ ] Revisar y comprender completamente los esquemáticos originales
-- [ ] Adaptar el diseño a componentes disponibles localmente
-- [ ] Crear lista detallada de materiales con proveedores
+### 🧪 Fase 1: Diseño
+- [ ] Revisar esquemáticos originales
+- [ ] Adaptar diseño a componentes locales
+- [ ] Lista de materiales y proveedores
 
-### Fase 2: Adquisición de Componentes
-- [ ] Ordenar componentes principales (SoC, pantalla, batería)
-- [ ] Solicitar fabricación de PCB personalizada
-- [ ] Adquirir herramientas necesarias
+### 📦 Fase 2: Adquisición
+- [ ] Comprar SoC, pantalla y batería
+- [ ] Mandar a hacer la PCB
+- [ ] Adquirir herramientas
 
-### Fase 3: Prototipado
-- [ ] Imprimir modelo 3D del chasis para pruebas
-- [ ] Ensamblar componentes electrónicos
-- [ ] Realizar pruebas iniciales de funcionamiento
+### 🔧 Fase 3: Prototipado
+- [ ] Imprimir modelo 3D
+- [ ] Ensamblar electrónicos
+- [ ] Probar funcionamiento
 
-### Fase 4: Fabricación Final
-- [ ] Solicitar fabricación CNC del chasis en aluminio
+### 🚀 Fase 4: Ensamble Final
+- [ ] Fabricar chasis CNC
 - [ ] Ensamblar versión final
-- [ ] Instalar y configurar sistema operativo
+- [ ] Instalar sistema operativo
 
 ---
 
-## Pendientes del Proyecto
+## ⏳ Pendientes del Proyecto
 
-- [ ] Diseñar o ajustar la PCB si modifico algo del diseño original
-- [ ] Pedir cotización del chasis en CNC (aluminio)
-- [ ] Preparar sistema operativo para RK3588
-- [ ] Probar compatibilidad entre el ESP32-S3 y los periféricos
-
----
-
-> [!NOTE] Motivación del proyecto
-> Este proyecto me servirá como un reto personal para profundizar en hardware, diseño electrónico, y para tener una laptop 100% personalizada y hecha por mí, con total control sobre sus componentes y funcionamiento.
+- [ ] Ajuste de PCB
+- [ ] Cotización del chasis CNC
+- [ ] Preparar sistema para RK3588
+- [ ] Pruebas de compatibilidad ESP32-S3
 
 ---
 
-## Presupuesto Estimado Total
-
-| Categoría | Costo aproximado |
-|-----------|------------------|
-| Componentes principales | $700-830 USD |
-| Accesorios y piezas adicionales | $45-85 USD |
-| Fabricación de PCB | $50-100 USD |
-| Fabricación de chasis | $150-300 USD |
-| **TOTAL** | **$945-1,315 USD** |
+<Info title="💡 Motivación del proyecto">
+  Este proyecto me servirá como un reto personal para profundizar en hardware, diseño electrónico, y tener una laptop 100% personalizada, con control total sobre su funcionamiento.
+</Info>
 
 ---
 
-## Referencias Adicionales
+## 💵 Presupuesto Estimado
 
-- [Comunidad Framework Laptop](https://community.frame.work/) (proyecto similar con enfoque comercial)
-- [Guía de diseño de PCB](https://www.pcbway.com/blog/PCB_Design_Guidelines/)
-- [Documentación de RK3588](https://wiki.radxa.com/Rock5/dev/rk3588)
+| Categoría | Costo |
+|-----------|--------|
+| Componentes principales | $700–830 USD |
+| Accesorios y piezas | $45–85 USD |
+| PCB | $50–100 USD |
+| Chasis | $150–300 USD |
+| **TOTAL** | **$945–1,315 USD** |
+
+---
+
+## 📎 Referencias Adicionales
+
+- [💬 Comunidad Framework Laptop](https://community.frame.work/)
+- [📘 Guía de diseño PCB (PCBWay)](https://www.pcbway.com/blog/PCB_Design_Guidelines/)
+- [📄 Documentación RK3588](https://wiki.radxa.com/Rock5/dev/rk3588)

@@ -77,3 +77,18 @@ summary: En esta rama narrativa, el protagonista crea un bucle meta-referencial 
 
 > [!NOTE] Punto de desarrollo
 > Esta rama narrativa termina en un punto abierto que permite múltiples interpretaciones y posibilidades para continuar la historia.
+
+---
+import React from 'react';
+export function Info({ title, children }) {
+  return (
+    <div style={{ borderLeft: '4px solid #3B82F6', background: '#EFF6FF', padding: '1em', borderRadius: '0.5em' }}>
+      <strong style={{ color: '#1D4ED8' }}>{title}</strong><br/>
+      {children}
+    </div>
+  );
+}
+
+<Info title="💡 Motivación del proyecto">
+  Este proyecto me servirá como un reto personal para profundizar en hardware, diseño electrónico, y tener una laptop 100% personalizada.
+</Info>
