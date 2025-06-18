@@ -152,9 +152,19 @@ Se trata de una computadora portátil modular, altamente integrada y totalmente 
 - [ ] Pruebas de compatibilidad ESP32-S3
 
 ---
+---
+import React from 'react';
+export function Info({ title, children }) {
+  return (
+    <div style={{ borderLeft: '4px solid #3B82F6', background: '#EFF6FF', padding: '1em', borderRadius: '0.5em' }}>
+      <strong style={{ color: '#1D4ED8' }}>{title}</strong><br/>
+      {children}
+    </div>
+  );
+}
 
 <Info title="💡 Motivación del proyecto">
-  Este proyecto me servirá como un reto personal para profundizar en hardware, diseño electrónico, y tener una laptop 100% personalizada, con control total sobre su funcionamiento.
+  Este proyecto me servirá como un reto personal para profundizar en hardware, diseño electrónico, y tener una laptop 100% personalizada.
 </Info>
 
 ---
